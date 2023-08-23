@@ -28,8 +28,11 @@ const TagHeader = styled.header`
         gap: 24px;
     }
 
+    @media (min-width: ${props => props.theme.desktopBreakpoint}){
+        padding: 20px 160px;
+    }
+`
 
-` 
 const Logo = styled.a`
     color: var(--logo-color);
     font-weight: 400;
@@ -37,16 +40,27 @@ const Logo = styled.a`
     line-height: 150%;
     text-decoration: none;
 
-    
+    @media(min-width: ${props => props.theme.tableBreakpoint}){
+        font-size: 24px;
+    }
+
+    @media(min-width: ${props => props.theme.desktopBreakpoint}){
+        font-size: 40px;
+    }
 `
+
 export function Header(props : HeaderProps){
-   
+    const {setSearch, search} = useFilter();
 
     return(
         <TagHeader>
             <Logo className={sairaStencil.className} href="/">Capputeeno</Logo>
             <div>
-                <PrimaryInputWSearchIcon placeholder="Procurando por algo específico?"/>
+                <PrimaryInputWSearchIcon
+                    value={search}
+                    handleChange={setSearch}
+                    placeholder="Procurando por algo específico?"
+                />
                 <CartControl/>
             </div>
         </TagHeader>
