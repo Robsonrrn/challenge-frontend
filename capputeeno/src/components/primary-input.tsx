@@ -2,7 +2,6 @@ import { InputHTMLAttributes } from "react";
 import { styled } from "styled-components";
 import { SearchIcon } from "./icons/search-icon";
 
-
 export const PrimaryInput = styled.input`
     width: 100%;
     border-radius: 8px;
@@ -17,8 +16,12 @@ export const PrimaryInput = styled.input`
     line-height: 20px;
     color: var(--text-dark);
 
+    @media(min-width: ${props => props.theme.desktopBreakpoint}){
+        font-size: 14px;
+        line-height: 22px;
     }
 `
+
 const InputContainer = styled.div`
     position: relative;
     width: 250px;
@@ -34,6 +37,7 @@ const InputContainer = styled.div`
         width: 352px;
     }
 `
+
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     value: string,
     handleChange: (value: string ) => void
